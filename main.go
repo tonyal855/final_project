@@ -5,6 +5,7 @@ import (
 	"final_project/server"
 	"final_project/server/controllers"
 	"final_project/server/repositories/gorm"
+	"os"
 )
 
 // @description    API MyGram
@@ -31,6 +32,7 @@ func main() {
 	userRepo := gorm.NewUserRepo(db)
 	userController := controllers.NewUserController(userRepo, photoRepo, commentRepo, socialMediaRepo)
 	router := server.NewRouter(userController, photocontroller, socialMediaController, commentController)
-	router.Start(":80")
+	var PORT = os.Getenv("POST")
+	router.Start(":" + PORT)
 
 }
