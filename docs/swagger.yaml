@@ -1,0 +1,355 @@
+basePath: /
+definitions:
+  models.ReqComment:
+    properties:
+      message:
+        type: string
+      photo_id:
+        type: integer
+    required:
+    - message
+    type: object
+  models.ReqLogin:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  models.ReqPhoto:
+    properties:
+      caption:
+        type: string
+      photo_url:
+        type: string
+      title:
+        type: string
+    required:
+    - photo_url
+    - title
+    type: object
+  models.ReqRegister:
+    properties:
+      age:
+        minimum: 9
+        type: integer
+      email:
+        type: string
+      password:
+        minLength: 6
+        type: string
+      username:
+        type: string
+    required:
+    - age
+    - email
+    - password
+    - username
+    type: object
+  models.ReqSocmed:
+    properties:
+      name:
+        type: string
+      social_media_url:
+        type: string
+    required:
+    - name
+    - social_media_url
+    type: object
+  models.ReqUserUpdate:
+    properties:
+      email:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact:
+    email: toni.al855@gmail.com
+    name: Toni
+  description: API MyGram
+  termsOfService: http://swagger.io/terms/
+paths:
+  /comments:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Comment
+      tags:
+      - Comment
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Comment
+        in: body
+        name: Comment
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReqComment'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Comment
+      tags:
+      - Comment
+  /comments/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Comment ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Comment
+      tags:
+      - Comment
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Comment
+        in: body
+        name: Comment
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReqComment'
+      - description: Comment ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Comment
+      tags:
+      - Comment
+  /photos:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Photo
+      tags:
+      - photo
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Photo
+        in: body
+        name: Photo
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReqPhoto'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Photo
+      tags:
+      - photo
+  /photos/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Photo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Delete
+      tags:
+      - photo
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Photo
+        in: body
+        name: Photo
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReqPhoto'
+      - description: Photo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Photo
+      tags:
+      - photo
+  /socialmedias:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Socmed
+      tags:
+      - socmed
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Photo
+        in: body
+        name: Socmed
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReqSocmed'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Socmed
+      tags:
+      - socmed
+  /socialmedias/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Socmed ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Socmed
+      tags:
+      - socmed
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Photo
+        in: body
+        name: Socmed
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReqSocmed'
+      - description: Socmed ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Socmed
+      tags:
+      - socmed
+  /users:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Delete User
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Update User
+        in: body
+        name: Update
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReqUserUpdate'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - BearerAuth: []
+      summary: Update User
+      tags:
+      - users
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Login
+        in: body
+        name: login
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReqLogin'
+      produces:
+      - application/json
+      responses: {}
+      summary: Login
+      tags:
+      - users
+  /users/register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Register
+        in: body
+        name: Register
+        required: true
+        schema:
+          $ref: '#/definitions/models.ReqRegister'
+      produces:
+      - application/json
+      responses: {}
+      summary: Register
+      tags:
+      - users
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
