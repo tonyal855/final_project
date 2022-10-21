@@ -32,7 +32,7 @@ func main() {
 	userRepo := gorm.NewUserRepo(db)
 	userController := controllers.NewUserController(userRepo, photoRepo, commentRepo, socialMediaRepo)
 	router := server.NewRouter(userController, photocontroller, socialMediaController, commentController)
-	var PORT = os.Getenv("PORTP")
+	var PORT = os.Getenv("PORT")
 	router.Start(":" + PORT)
 
 }
