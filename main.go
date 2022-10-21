@@ -31,6 +31,6 @@ func main() {
 	userRepo := gorm.NewUserRepo(db)
 	userController := controllers.NewUserController(userRepo, photoRepo, commentRepo, socialMediaRepo)
 	router := server.NewRouter(userController, photocontroller, socialMediaController, commentController)
-	router.Start(":9000")
+	router.Start(":80")
 
 }
